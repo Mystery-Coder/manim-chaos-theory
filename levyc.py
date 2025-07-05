@@ -35,7 +35,7 @@ class LevyC(Scene):
         C = np.array([0.5, 0.5])
 
         ITERATIONS = 2500
-        SCALE = 4
+        SCALE = 3.6
         # Start from a random point
         X = np.array([randint(-1, 1), randint(-1, 1)], dtype=float)
         points = []
@@ -54,7 +54,7 @@ class LevyC(Scene):
         CHUNK_SIZE = 500
         for i in range(0, len(points), CHUNK_SIZE):
             chunk = points[i:i+CHUNK_SIZE]
-            dots = [Dot(p, radius=0.02, color=(RED if (i+j)%4 < 2 else BLUE)) for j,p in enumerate(chunk)]
+            dots = [Dot(p, radius=0.02, color=RED) for j,p in enumerate(chunk)]
             self.play(*[FadeIn(dot, run_time=0.3) for dot in dots])
 
         self.wait(2)

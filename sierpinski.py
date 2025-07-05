@@ -17,7 +17,7 @@ class Sierpinski(Scene):
 
     def construct(self):
         axes = Axes()
-        self.add(axes)
+        # self.add(axes)
         # Different quadrants to spread out the pattern
         A = [randint(1,4), randint(1,4)] # 1st quadrant
         B = [-randint(1,4), randint(1,4)] # 2nd quadrant
