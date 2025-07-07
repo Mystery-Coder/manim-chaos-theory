@@ -32,27 +32,26 @@ class Sierpinski(Scene):
         x = start
 
         ITERATIONS = 1000
-
+        dots = []
         while ITERATIONS != 0:
             roll = randint(1,6)
             mid = []
             if roll in (1,2):
                 # Calculate mid point between x and A
                 mid = [(x[0] + A[0])/2, (x[1] + A[1])/2]
-
-                self.add(Dot(axes.c2p(mid[0], mid[1]), radius=0.04, color=RED))
             elif roll in (3,4):
-
                 mid = [(x[0] + B[0])/2, (x[1] + B[1])/2]
-
-                self.add(Dot(axes.c2p(mid[0], mid[1]), radius=0.04, color=RED))
             else:
                 mid = [(x[0] + C[0])/2, (x[1] + C[1])/2]
 
-                self.add(Dot(axes.c2p(mid[0], mid[1]), radius=0.04, color=RED))
-            
+            # Calculate the dots, do chunk animation
+            dots.append(Dot(axes.c2p(mid[0], mid[1]), radius=0.04, color=RED))
             x = mid
             ITERATIONS -= 1
+
+        CHUNK = 500
+        for i in range(0, len(dots), CHUNK):
+            self.play(*[FadeIn(dot, run_time=0.5) for dot in dots])
         
             
 
