@@ -24,14 +24,14 @@ class Sierpinski(Scene):
         C = [-randint(1,4), -randint(1,4)] # 3rd quadrant
         start = [randint(1,4), -randint(1,4)]      
 
-        self.add(Dot(axes.c2p(A[0], A[1]), radius=0.04, color=RED))
-        self.add(Dot(axes.c2p(B[0], B[1]), radius=0.04, color=RED))
-        self.add(Dot(axes.c2p(C[0], C[1]), radius=0.04, color=RED))
-        self.add(Dot(axes.c2p(start[0], start[1]), radius=0.04, color=WHITE))
+        self.add(Dot(axes.c2p(A[0], A[1]), radius=0.08, color=RED))
+        self.add(Dot(axes.c2p(B[0], B[1]), radius=0.08, color=RED))
+        self.add(Dot(axes.c2p(C[0], C[1]), radius=0.08, color=RED))
+        self.add(Dot(axes.c2p(start[0], start[1]), radius=0.08, color=WHITE))
 
         x = start
 
-        ITERATIONS = 1000
+        ITERATIONS = 1200
         dots = []
         while ITERATIONS != 0:
             roll = randint(1,6)
@@ -49,9 +49,10 @@ class Sierpinski(Scene):
             x = mid
             ITERATIONS -= 1
 
-        CHUNK = 500
+        CHUNK = 300
         for i in range(0, len(dots), CHUNK):
-            self.play(*[FadeIn(dot, run_time=0.5) for dot in dots])
+            chunk = dots[i:i+CHUNK]
+            self.play(*[FadeIn(dot, run_time=0.6) for dot in chunk])
         
             
 
