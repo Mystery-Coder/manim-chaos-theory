@@ -38,23 +38,32 @@ class LevyC(Scene):
         SCALE = 3.6
         # Start from a random point
         X = np.array([randint(-1, 1), randint(-1, 1)], dtype=float)
-        points = []
 
+        dots = []
         for _ in range(ITERATIONS):
-            points.append(SCALE*axes.c2p(X[0], X[1]))
-
 
             f1 = A @ X
             f2 = (B @ X) - C
+            
+            # X = f1 if randint(0, 1) else f2
+            dot = Dot(SCALE*axes.c2p(X[0], X[1]), radius=0.02)
 
-            X = f1 if randint(0, 1) else f2
+            if randint(0,1) == 1:
+                dot.set_color(BLUE)
+                X = f1
+            else:
+                dot.set_color(BLUE)
+                X = f2
+
+            dots.append(dot)
 
 
         # Animate dots together
         CHUNK_SIZE = 500
-        for i in range(0, len(points), CHUNK_SIZE):
-            chunk = points[i:i+CHUNK_SIZE]
-            dots = [Dot(p, radius=0.02, color=RED) for j,p in enumerate(chunk)]
-            self.play(*[FadeIn(dot, run_time=0.3) for dot in dots])
+        for i in range(0, len(dots), CHUNK_SIZE):
+            chunk = dots[i:i+CHUNK_SIZE]
+            self.play(*[FadeIn(dot, run_time=0.3) for dot in chunk])
+
+
 
         self.wait(2)
