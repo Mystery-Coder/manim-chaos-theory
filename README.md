@@ -1,6 +1,6 @@
 # 🌀 Chaos Theory using Manim
 
-Implementing chaos theory animations using the Manim library in Python
+Implementing chaos theory animations using the Manim library in Python. Inspired by this <a href="https://youtu.be/kbKtFN71Lfs?si=H52hHP_0O9CBdGqN">Numberphile</a> video.
 
 ## 1. Levy C Curve
 
