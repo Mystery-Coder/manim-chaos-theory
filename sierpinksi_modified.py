@@ -21,7 +21,7 @@ class SierpinskiModified(Scene):
         start = [randint(1,4), -randint(1,4)]
 
         m = 1
-        n = 0.618
+        n = 1.618
 
         self.add(Dot(axes.c2p(A[0], A[1]), radius=0.1, color=RED))
         self.add(Dot(axes.c2p(B[0], B[1]), radius=0.1, color=RED))
